@@ -34,23 +34,23 @@
 ### Justificación
 - **Estados y Transiciones**:
   - [cite_start]El billete pasa de **No emitido** a **Emitido** tras completar el pago[cite: 29].
-  - [cite_start]La transición de **Emitido** a **Validado** ocurre mediante el evento "picar en el torno"[cite: 30].
-  - [cite_start]Finalmente, el estado pasa a **Agotado** una vez el viaje se ha completado[cite: 29].
+  - [cite_start]La transición de **Emitido** a **Validado** ocurre mediante el evento "picar en el torno".
+  - [cite_start]Finalmente, el estado pasa a **Agotado** una vez el viaje se ha completado.
 
 ---
 
 ## Actividad 3: Sistema de Alarma Inteligente
 ### Explicación de los Diagramas
 - [cite_start]**Estados**: Modela el comportamiento dinámico de la alarma, incluyendo retardos de entrada y modos de emergencia[cite: 35].
-- [cite_start]**Casos de Uso**: Define cómo los propietarios, técnicos y sensores interactúan con las funciones de seguridad[cite: 42, 43].
+- **Casos de Uso**: Define cómo los propietarios, técnicos y sensores interactúan con las funciones de seguridad.
 
 ### Justificación
 - **Actores**: 
-  - [cite_start]**Propietario**: Usuario que arma/desarma[cite: 42].
-  - [cite_start]**Sensor de Movimiento**: Actor de sistema que dispara la alerta[cite: 42].
-  - [cite_start]**Técnico**: Actor especializado para el mantenimiento[cite: 42].
-  - [cite_start]**Central de Policía**: Receptor de alertas externas[cite: 42].
+  - **Propietario**: Usuario que arma/desarma[cite: 42].
+  - **Sensor de Movimiento**: Actor de sistema que dispara la alerta[cite: 42].
+  - **Técnico**: Actor especializado para el mantenimiento[cite: 42].
+  - **Central de Policía**: Receptor de alertas externas[cite: 42].
 - **Estados y Transiciones**:
-  - [cite_start]Si el sistema está **Armado** y detecta movimiento, entra en **En Espera** (retardo de 30s) antes de pasar a **Alarma Sonando** si no se introduce el código[cite: 36, 37].
-  - [cite_start]El estado de **Mantenimiento** es accesible desde cualquier punto mediante una llave especial del técnico[cite: 39].
-  - [cite_start]**Acciones**: Al entrar en "Alarma Sonando", se ejecutan automáticamente acciones como `llamar_policia()` y `activar_sirena()`[cite: 40].
+  - Si el sistema está **Armado** y detecta movimiento, entra en **En Espera** (retardo de 30s) antes de pasar a **Alarma Sonando** si no se introduce el código[cite: 36, 37].
+  - El estado de **Mantenimiento** es accesible desde cualquier punto mediante una llave especial del técnico[cite: 39].
+  - **Acciones**: Al entrar en "Alarma Sonando", se ejecutan automáticamente acciones como `llamar_policia()` y `activar_sirena()`[cite: 40].
