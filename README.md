@@ -1,56 +1,37 @@
-# ED-Unidad07
+
 # Entornos de Desarrollo - Unidad 07: Modelado con UML
 
-Este repositorio contiene las actividades prácticas correspondientes a la Unidad 07, centradas en el diseño de diagramas de casos de uso, actividades y estados para diferentes sistemas de gestión y control.
 
-## Estructura del Repositorio
-[cite_start]La organización de los archivos es la siguiente:
-- `/Actividad 1`: Gestión de un Centro Deportivo.
-- `/Actividad 2`: Máquina Expendedora de Billetes.
-- `/Actividad 3`: Sistema de Alarma Inteligente.
 
----
+Este repositorio contiene los diagramas correspondientes a la unidad de modelado de software. Se han realizado diagramas de Casos de Uso, Actividades y Estados para tres supuestos distintos siguiendo las pautas de la entrega.
 
-## Actividad 1: Sistema de Gestión de un Centro Deportivo
-### Explicación de los Diagramas
-- **Casos de Uso**: Representa las interacciones de los socios (reservas y clases) y el administrador (gestión) con el sistema del centro.
-- **Actividades**: Detalla el flujo lógico desde que un socio elige fecha y hora hasta que recibe la confirmación de su reserva o la denegación por impago.
+## 📂 Contenido del repositorio
 
-### Justificación
-- **Actores**: 
-  - **Socio**: Usuario principal que interactúa con las reservas.
-  - **Administrador**: Responsable de la gestión de pagos y alta de contenidos.
-- **Relaciones**:
-  - **Include**: La reserva de pista siempre requiere la verificación de pagos pendientes.
-  - **Extend**: La contratación del seguro de lesiones es una opción adicional y voluntaria al apuntarse a una clase.
+La estructura de carpetas se ha organizado de la siguiente manera:
+* **/Actividad 1**: Gestión del centro deportivo (Reservar pista).
+* **/Actividad 2**: Lógica de la máquina de billetes de metro.
+* **/Actividad 3**: Configuración y estados de una alarma inteligente.
 
 ---
 
-## Actividad 2: Máquina Expendedora de Billetes
-### Explicación de los Diagramas
-- **Actividades**: Describe el proceso de compra, diferenciando entre el pago con tarjeta (validación bancaria) y efectivo (gestión de cambio).
-- **Estados**: Muestra el ciclo de vida de un billete, desde su creación hasta que queda inutilizable.
+## 🛠️ Justificación técnica
 
-### Justificación
-- **Estados y Transiciones**:
-  - El billete pasa de **No emitido** a **Emitido** tras completar el pago.
-  - La transición de **Emitido** a **Validado** ocurre mediante el evento "picar en el torno".
-  - Finalmente, el estado pasa a **Agotado** una vez el viaje se ha completado.
+### Actividad 1: Centro Deportivo
+En el diagrama de **Casos de Uso**, he separado las funciones del Socio y del Administrador.
+* **Relaciones**: He usado un `<<include>>` para la verificación de pagos porque el enunciado dice que el sistema "siempre debe verificar" antes de reservar. Para el seguro de lesiones he usado un `<<extend>>` ya que es algo opcional que el socio decide en el momento.
+* **Flujo**: El diagrama de actividades contempla el bucle de "elegir otra fecha" si no hay pistas libres, tal como se pide en el flujo de control.
+
+### Actividad 2: Máquina de Metro
+* **Proceso de pago**: En el diagrama de actividades he creado una bifurcación según el método de pago (tarjeta o efectivo). Para la tarjeta se incluye la validación del PIN con el banco y para el efectivo la comprobación del cambio.
+* **Ciclo de vida del Billete**: En el diagrama de estados, el billete empieza como "No emitido" y cambia a "Emitido" tras el pago. El paso clave es la transición a "Validado" que ocurre con el evento de "picar" en el torno.
+
+### Actividad 3: Alarma Inteligente
+Es el sistema más complejo por el comportamiento dinámico de sus estados.
+* **Estados**: He incluido el estado "En Espera" que actúa como un retardo de 30 segundos antes de que la alarma suene realmente.
+* **Mantenimiento**: He configurado este estado para que sea accesible desde cualquier otro punto del diagrama si el técnico usa su llave.
+* **Actores**: Además del Propietario, he definido al Sensor como el actor que dispara el evento de movimiento y a la Policía como el actor que recibe la alerta.
 
 ---
 
-## Actividad 3: Sistema de Alarma Inteligente
-### Explicación de los Diagramas
-- **Estados**: Modela el comportamiento dinámico de la alarma, incluyendo retardos de entrada y modos de emergencia.
-- **Casos de Uso**: Define cómo los propietarios, técnicos y sensores interactúan con las funciones de seguridad.
-
-### Justificación
-- **Actores**: 
-  - **Propietario**: Usuario que arma/desarma[cite: 42].
-  - **Sensor de Movimiento**: Actor de sistema que dispara la alerta[cite: 42].
-  - **Técnico**: Actor especializado para el mantenimiento[cite: 42].
-  - **Central de Policía**: Receptor de alertas externas[cite: 42].
-- **Estados y Transiciones**:
-  - Si el sistema está **Armado** y detecta movimiento, entra en **En Espera** (retardo de 30s) antes de pasar a **Alarma Sonando** si no se introduce el código[cite: 36, 37].
-  - El estado de **Mantenimiento** es accesible desde cualquier punto mediante una llave especial del técnico[cite: 39].
-  - **Acciones**: Al entrar en "Alarma Sonando", se ejecutan automáticamente acciones como `llamar_policia()` y `activar_sirena()`.
+## 🚀 Formato de los archivos
+* Los diagramas finales están en formato **.png** para facilitar su visualización directa en GitHub.
